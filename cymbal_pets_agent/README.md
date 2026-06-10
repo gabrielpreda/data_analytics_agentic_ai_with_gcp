@@ -41,14 +41,16 @@ uv pip install -r requirements.txt
 
 ## Test the agent
 
+### 1. Run locally
+
 Run (from the folder containing the current folder):
 
 ```bash
 adk web
 ```
 
-This will start a web application running at `localhost:8000`.
 
+This will start a web application running at `localhost:8000`.
 
 In the interface, select `cymbal_pets_agent`.
 
@@ -59,3 +61,24 @@ Test the agent with few questions (these are just examples):
 * What KPIs should executives monitor?
 * What analytics would help identify top customers?
 
+### 2. Run in GCP Console
+
+Make sure to start `adk web` with:
+
+```bash
+adk web --allow_origins "regex:.*"
+```
+
+You might need to run as well:
+
+```bash
+gcloud auth application-default login
+```
+
+and:
+
+```bash
+gcloud services enable aiplatform.googleapis.com
+```
+
+if not set previously.
