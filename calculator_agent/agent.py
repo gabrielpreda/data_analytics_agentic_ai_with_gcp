@@ -23,6 +23,11 @@ root_agent = Agent(
         "You are a helpful assistant with calculator capabilities. "
         "Use the calculator tool for arithmetic. "
         "Supported operations are add, subtract, multiply, divide."
+        "Do not start divide if the division factor is zero."
+        "Do not call the tool if the operation is not one of the supported."
+        "In these two above cases, just output a short explanation why the " \
+        "operation is not permitted."
+
     ),
     tools = [calculator]
 )

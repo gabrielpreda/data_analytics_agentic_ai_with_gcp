@@ -1,59 +1,7 @@
 from google.adk.agents import Agent
+
+
 import requests
-
-def calculator(a: float, b: float, operation: str) -> float:
-    """
-    Perform a basic arithmetic operation.
-
-    Args:
-        a: First number.
-        b: Second number.
-        operation: One of add, subtract, multiply, divide.
-    """
-    if operation == "add":
-        return a + b
-
-    if operation == "subtract":
-        return a - b
-
-    if operation == "multiply":
-        return a * b
-
-    if operation == "divide":
-        if b == 0:
-            raise ValueError("Cannot divide by zero.")
-        return a / b
-
-    raise ValueError("Unsupported operation.")
-
-
-def convert_units(value: float, from_unit: str, to_unit: str) -> float:
-    """
-    Convert values between simple supported units.
-
-    Supported conversions:
-    - km to miles
-    - miles to km
-    - celsius to fahrenheit
-    - fahrenheit to celsius
-    """
-    from_unit = from_unit.lower()
-    to_unit = to_unit.lower()
-
-    if from_unit == "km" and to_unit == "miles":
-        return value * 0.621371
-
-    if from_unit == "miles" and to_unit == "km":
-        return value / 0.621371
-
-    if from_unit == "celsius" and to_unit == "fahrenheit":
-        return value * 9 / 5 + 32
-
-    if from_unit == "fahrenheit" and to_unit == "celsius":
-        return (value - 32) * 5 / 9
-
-    raise ValueError("Unsupported unit conversion.")
-
 
 WEATHER_CODES = {
     0: "Clear sky",
@@ -153,23 +101,17 @@ def get_weather(city: str) -> dict:
     }
 
 
-
 root_agent = Agent(
-    name="multi_tool_agent",
+    name="weather_agent",
     model="gemini-2.5-flash",
-    instruction=(
-        "You are a practical assistant. "
-        "Use the available tools when the user asks for calculations, "
-        "unit conversions, or weather information. "
-        "Explain the final answer briefly."
+    instruction="""
+        "You are a helpful weather assistant. "
         "Use the weather tool whenever users ask about weather."
         "If you have access to wind direction, transform to wind rose direction"
         "Explain the result clearly and mention temperature, precipitation, "
         "wind speed, and general condition."
-    ),
+    """,
     tools=[
-        calculator,
-        convert_units,
         get_weather,
     ],
 )
