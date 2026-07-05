@@ -37,4 +37,6 @@
 
 | Resource | Description |
 |---------|----------|
-| [looker_studio](looker_studio) | Create a Dashboard in Data (Looker) Studio with data from Cymbal Pets |
+| [Dashboard - Cymbal Pets](looker_studio_cymbal_pets) | Create a Dashboard in Data (Looker) Studio with data from Cymbal Pets |
+| [Dashboard - USA Names](looker_studio_usa_names) | Create a Dashboard in Data (Looker) Studio with data from USA Names |
+| [Dashboard - US Census](looker_studio_us_census) | Create a Dashboard in Data (Looker) Studio with data from US Census |
